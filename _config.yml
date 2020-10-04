@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: HappyTeemo
+subtitle: '提千万的个人博客'
+description: '知识是属于世界的'
 keywords:
-author: John Doe
+author: HappyTeemo
 language: en
 timezone: ''
 
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
