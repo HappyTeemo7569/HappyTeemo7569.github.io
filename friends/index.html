@@ -1026,7 +1026,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"enable":true,"appId":"GzMVP8NqDvoOVo2zP7lT2siE-gzGzoHsz","appKey":"KLsarnXrM1fRVFYbqPunGoda","guest_info":"nick,mail,link","placeholder":"快来评论吧~","avatar":"mp","pageSize":10,"verify":false,"notify":false,"lang":"zh-cn"}, {
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"GzMVP8NqDvoOVo2zP7lT2siE-gzGzoHsz","appKey":"KLsarnXrM1fRVFYbqPunGoda","meta":["nick","mail","link"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"verify":false,"notify":false}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
