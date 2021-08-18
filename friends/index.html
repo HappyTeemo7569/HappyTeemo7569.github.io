@@ -22,7 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>tags - HappyTeemo</title>
+  <title>我的朋友们 - HappyTeemo</title>
   
 
   
@@ -353,7 +353,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper page search' style="display: none;">
+        <div id="full" class='cover-wrapper friends search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg"></div>
           
@@ -439,8 +439,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-page" id="page" itemscope itemprop="blogPost">
-  
+  <article id="friends" class="md post article article-entry l_friends white-box reveal shadow article-type-friends" itemscope itemprop="blogPost">
+    
 
 
   
@@ -449,7 +449,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        tags
+        我的朋友们
       </h1>
       <div class='new-meta-box'>
         
@@ -475,7 +475,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Oct 25, 2018</p>
+    <p>发布于：Aug 18, 2021</p>
   </a>
 </div>
 
@@ -504,7 +504,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="tags" data-path="/friends/">
+      <div id="lc-pv" data-title="我的朋友们" data-path="/friends/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -536,12 +536,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 
 
-  
-  
-  
-  
-  
-  
+    
+    
+    <br><br>
+    
     
 
 
@@ -549,7 +547,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-18T14:49:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-18T15:54:22+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Aug 18, 2021</p>
@@ -571,7 +569,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/friends/index.html&title=tags - HappyTeemo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/friends/index.html&title=我的朋友们 - HappyTeemo&summary="
           
           >
           
@@ -583,7 +581,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/friends/index.html&title=tags - HappyTeemo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/friends/index.html&title=我的朋友们 - HappyTeemo&summary="
           
           >
           
@@ -595,7 +593,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/friends/index.html&title=tags - HappyTeemo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/friends/index.html&title=我的朋友们 - HappyTeemo&summary="
           
           >
           
@@ -619,12 +617,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 
 
-  
-  
-
-  
-</article>
-
+  </article>
 
   
 
@@ -636,9 +629,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </div>
 
   </article>
-
-
-
 
 
 
@@ -656,7 +646,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 </aside>
-
 
 
 		  
@@ -1037,7 +1026,7 @@ var loadCSS = function( href, before, media, attributes ){
       path = defaultPath || decodeURI(window.location.pathname);
     }
     var valine = new Valine();
-    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":null,"appKey":null,"meta":["nick","mail","link"],"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false}, {
+    valine.init(Object.assign({"enable":true,"appId":"GzMVP8NqDvoOVo2zP7lT2siE-gzGzoHsz","appKey":"KLsarnXrM1fRVFYbqPunGoda","guest_info":"nick,mail,link","placeholder":"快来评论吧~","avatar":"mp","pageSize":10,"verify":false,"notify":false,"lang":"zh-cn"}, {
       el: '#valine_container',
       path: path,
       placeholder: pagePlaceholder,
