@@ -477,7 +477,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md'>
     
       
-        《觉醒年代》经典台词——第一集 袁世凯丧权辱国引民愤 李大钊慷慨陈词欲救国　　1、天发杀机，战云四飞，倭族趁机，逼我夏宇，留日学子，羁身异域，回望神州，仰天悲愤。既然已经到了国亡人死之际，便再无投鼠忌器之顾虑，我们应该有破釜沉舟之决心。窃国大盗袁世凯，恢复帝制想要当皇帝，中华民国危在旦夕了；卖国贼袁世凯签定了二十一条，中华民族危在旦夕了。同胞们，共和就要死了，青岛就要丢了，同胞们，你们说，怎...
+        袁世凯丧权辱国引民愤   李大钊慷慨陈词欲救国1、天发杀机，战云四飞，倭族趁机，逼我夏宇，留日学子，羁身异域，回望神州，仰天悲愤。既然已经到了国亡人死之际，便再无投鼠忌器之顾虑，我们应该有破釜沉舟之决心。窃国大盗袁世凯，恢复帝制想要当皇帝，中华民国危在旦夕了；卖国贼袁世凯签定了二十一条，中华民族危在旦夕了。同胞们，共和就要死了，青岛就要丢了，同胞们，你们说，怎么办？
+——留日学生李大钊在日本...
       
     
   </div>
@@ -692,7 +693,7 @@ coding可以改变世界。
 
 
     <div class='content'>
-      <a href="/tags/Go/" style="font-size: 14px; color: #999">Go</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">个人成长</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">成长</a> <a href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/" style="font-size: 14px; color: #999">电视剧</a>
+      <a href="/tags/Go/" style="font-size: 14px; color: #999">Go</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">个人成长</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">成长</a> <a href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/" style="font-size: 14px; color: #999">电视剧</a> <a href="/tags/%E8%A7%89%E9%86%92%E5%B9%B4%E4%BB%A3/" style="font-size: 14px; color: #999">觉醒年代</a>
     </div>
   </section>
 
@@ -1237,7 +1238,7 @@ function setSearchService() {
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+        var pvGetter = this.getRecord(Counter, 'https://happyteemo.com' + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -1255,7 +1256,7 @@ function setSearchService() {
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+        var uvGetter = this.getRecord(Counter, 'https://happyteemo.com' + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -1277,7 +1278,7 @@ function setSearchService() {
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var url = 'http://example.com' + pv.getAttribute('data-path');
+          var url = 'https://happyteemo.com' + pv.getAttribute('data-path');
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增
