@@ -385,6 +385,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div class='list-h'>
         
           
+<<<<<<< Updated upstream
             <a href="/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"
               
               
@@ -425,6 +426,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
               id="https:githubcomvolantis-xhexo-theme-volantis">
               <p>源码</p>
+=======
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-rss fa-fw'></i><p>博客</p>
+            </a>
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <i class='fas fa-tags fa-fw'></i><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友链</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+>>>>>>> Stashed changes
             </a>
           
         
@@ -456,6 +499,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+<<<<<<< Updated upstream
+      
+    
+    
+      
+=======
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
@@ -469,19 +534,29 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/202108/1799/">
-        Aug 20, 2021
+      <a href="/202107/62908/">
+        【手把手教你写Go】GO语言并发编程
       </a>
     </h2>
   
   <div class='md'>
+    
+      
+        11.1 概述11.1.1 并行和并发并行(parallel)： 指在同一时刻，有多条指令在多个处理器上同时执行。
+
+并发(concurrency)： 指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把时间分成若干段，使多个进程快速交替的执行。
+
+
+并行是两个队列同时使用两台咖啡机
+并发是两个队列交替使用...
+      
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2021-08-20</time>
+        <time>2021-07-13</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
@@ -489,7 +564,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/202108/1799/'>
+          <a class='readmore' href='/202107/62908/'>
             Read More
           </a>
         </div>
@@ -511,14 +586,281 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title" >
-      <a href="/202108/1799/">
-        【手把手教你写Go】01.为什么要选择Go语言
+      <a href="/202107/28598/">
+        【手把手教你写Go】Go语言文本处理
       </a>
     </h2>
   
   <div class='md'>
     
       
+        10.1 字符串处理字符串在开发中经常用到，包括用户的输入，数据库读取的数据等，我们经常需要对字符串进行分割、连接、转换等操作，我们可以通过Go标准库中的strings和strconv两个包中的函数进行相应的操作。
+10.1.1 字符串操作下面这些函数来自于strings包，这里介绍一些我平常经常用到的函数，更详细的请参考官方的文档。
+10.1.1.1 Contains 子串查询12345f...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/28598/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/54234/">
+        【手把手教你写Go】Go语言的异常处理
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        9.1 error接口Go语言引入了一个关于错误处理的标准模式，即error接口，它是Go语言内建的接口类型，该接口的定义如下：
+123456789101112131415161718type error interface &#123;    Error() string&#125; Go语言的标准库代码包errors为用户提供如下方法：package errors type errorS...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-11</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/54234/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/18820/">
+        【手把手教你写Go】面向对象编程
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        8.1 概述对于面向对象编程的支持Go 语言设计得非常简洁而优雅。因为， Go语言并没有沿袭传统面向对象编程中的诸多概念，比如继承(不支持继承，尽管匿名字段的内存布局和行为类似继承，但它并不是继承)、虚函数、构造函数和析构函数、隐藏的this指针等。
+尽管Go语言中没有封装、继承、多态这些概念，但同样通过别的方式实现这些特性：
+
+  l 封装：通过方法实现
+  l 继承：通过匿名字段实现
+ ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/18820/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/15495/">
+        【手把手教你写Go】复合类型-结构体
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        7.6 结构体7.6.1 结构体类型有时我们需要将不同类型的数据组合成一个有机的整体，如：一个学生有学号/姓名/性别/年龄/地址等属性。显然单独定义以上变量比较繁琐，数据不便于管理。
+结构体是一种聚合的数据类型，它是由一系列具有相同类型或不同类型的数据构成的数据集合。每个数据称为结构体的成员。
+7.6.2 结构体初始化7.6.2.1 普通变量1234567891011121314151617...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-09</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/15495/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+>>>>>>> Stashed changes
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+<<<<<<< Updated upstream
+      <a href="/202108/1799/">
+        Aug 20, 2021
+=======
+      <a href="/202107/55300/">
+        【手把手教你写Go】复合类型-map
+>>>>>>> Stashed changes
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+<<<<<<< Updated upstream
+=======
+      
+        7.5 map7.5.1 概述Go语言中的map(映射、字典)是一种内置的数据结构，它是一个无序的key—value对的集合，比如以身份证号作为唯一键来标识一个人的信息。
+map格式为：
+1map[keyType]valueType
+
+在一个map里所有的键都是唯一的，而且必须是支持==和!=操作符的类型，切片、函数以及包含切片的结构类型这些类型由于具有引用语义，不能作为映射的键，使用这些类...
+      
+    
+>>>>>>> Stashed changes
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+<<<<<<< Updated upstream
+        <time>2021-08-20</time>
+=======
+        <time>2021-07-08</time>
+>>>>>>> Stashed changes
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+<<<<<<< Updated upstream
+          <a class='readmore' href='/202108/1799/'>
+=======
+          <a class='readmore' href='/202107/55300/'>
+>>>>>>> Stashed changes
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+<<<<<<< Updated upstream
+      <a href="/202108/1799/">
+        【手把手教你写Go】01.为什么要选择Go语言
+=======
+      <a href="/202107/30984/">
+        【手把手教你写Go】Go语言复合类型-数组和切片
+>>>>>>> Stashed changes
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+<<<<<<< Updated upstream
         一门语言的兴起一定有他的原因，所谓天下苦Java久矣，Go的到来可以说很多后端开发的福音，尤其是在微服务、分布式这么火的今天，那么，他的优势到底是什么呢？
 首先，我们需要现有后端语言的优势痛点：
 
@@ -527,6 +869,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写全栈代码，可以说是神器。
 脚本语言...
+=======
+        7.3 数组7.3.1 概述数组是指一系列同一类型数据的集合。数组中包含的每个数据被称为数组元素（element），一个数组包含的元素个数被称为数组的长度。
+数组⻓度必须是常量，且是类型的组成部分。 [2]int 和 [3]int 是不同类型。
+123var n int = 10var a [n]int  //err, non-constant array bound nvar b [10]...
       
     
   </div>
@@ -534,7 +880,7 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2021-08-19</time>
+        <time>2021-07-08</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
@@ -542,7 +888,170 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
       </div>
       
         <div>
+          <a class='readmore' href='/202107/30984/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/7741/">
+        【手把手教你写Go】Go语言复合类型-指针
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        7.1 分类
+pointer  指针
+array 数组
+slice 切片
+map 字典
+struct 结构体
+
+7.2指针指针是一个代表着某个内存地址的值。这个内存地址往往是在内存中存储的另一个变量的值的起始位置。
+7.2.1 基本操作Go语言虽然保留了指针，但与其它编程语言不同的是：
+
+ 默认值 nil，没有 NULL 常量
+ 操作符 “&amp;” 取变量地址， “*” 通过指针访问目标...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-07</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/7741/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/51142/">
+        【手把手教你写Go】Go语言的工程管理
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        06.工程管理在实际的开发工作中，直接调用编译器进行编译和链接的场景是少而又少，因为在工程中不会简单到只有一个源代码文件，且源文件之间会有相互的依赖关系。如果这样一个文件一个文件逐步编译，那不亚于一场灾难。 Go语言的设计者作为行业老将，自然不会忽略这一点。早期Go语言使用makefile作为临时方案，到了Go 1发布时引入了强大无比的Go命令行工具。
+Go命令行工具的革命性之处在于彻底消除...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-07-06</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/202107/51142/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/202107/6545/">
+        【手把手教你写Go】函数
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        5.函数5.1 定义格式函数构成代码执行的逻辑结构。
+在Go语言中，函数的基本组成为：关键字func、函数名、参数列表、返回值、函数体和返回语句。
+Go 语言函数定义格式如下：
+12345func FuncName(/*参数列表*/) (o1 type1, o2 type2/*返回类型*/) &#123;    //函数体     return v1, v2 //返回多个值&#125;
+函数...
+>>>>>>> Stashed changes
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+<<<<<<< Updated upstream
+        <time>2021-08-19</time>
+=======
+        <time>2021-07-05</time>
+>>>>>>> Stashed changes
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+        
+      </div>
+      
+        <div>
+<<<<<<< Updated upstream
           <a class='readmore' href='/202108/1799/'>
+=======
+          <a class='readmore' href='/202107/6545/'>
+>>>>>>> Stashed changes
             Read More
           </a>
         </div>
@@ -559,6 +1068,24 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
   </section>
   
     
+<<<<<<< Updated upstream
+=======
+      <br>
+      <div class="prev-next">
+        
+        <p class="current">
+          1 / 2
+        </p>
+        
+          <a class="next" rel="next" href="/tags/Go/page/2/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
+        
+      </div>
+    
+>>>>>>> Stashed changes
   
 
 
@@ -656,7 +1183,16 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
           <li><a class="flat-box"
             title="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/"
             id="categoriesGoE8AFADE8A880E59FBAE7A180"
+<<<<<<< Updated upstream
             ><div class='name'>Go语言基础</div><div class='badge'>(2)</div></a></li>
+=======
+            ><div class='name'>Go语言基础</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+>>>>>>> Stashed changes
         
           <li><a class="flat-box"
             title="/categories/%E6%91%98%E6%8A%84/" href="/categories/%E6%91%98%E6%8A%84/"
@@ -666,7 +1202,11 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
           <li><a class="flat-box"
             title="/categories/%E9%9A%8F%E7%AC%94/" href="/categories/%E9%9A%8F%E7%AC%94/"
             id="categoriesE99A8FE7AC94"
+<<<<<<< Updated upstream
             ><div class='name'>随笔</div><div class='badge'>(13)</div></a></li>
+=======
+            ><div class='name'>随笔</div><div class='badge'>(15)</div></a></li>
+>>>>>>> Stashed changes
         
       </ul>
     </div>
@@ -690,7 +1230,11 @@ PHP，脚本语言，开发速度飞快，而且可复用性高，如果是写�
 
 
     <div class='content'>
+<<<<<<< Updated upstream
       <a href="/tags/Go/" style="font-size: 19px; color: #777">Go</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">个人成长</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">成长</a> <a href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/" style="font-size: 24px; color: #555">电视剧</a> <a href="/tags/%E8%A7%89%E9%86%92%E5%B9%B4%E4%BB%A3/" style="font-size: 24px; color: #555">觉醒年代</a>
+=======
+      <a href="/tags/Go/" style="font-size: 24px; color: #555">Go</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #999">Linux命令</a> <a href="/tags/go-error/" style="font-size: 14px; color: #999">go error</a> <a href="/tags/map/" style="font-size: 14px; color: #999">map</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">个人成长</a> <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86/" style="font-size: 14px; color: #999">包管理</a> <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="font-size: 14px; color: #999">并发编程</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 14px; color: #999">成长</a> <a href="/tags/%E7%94%B5%E8%A7%86%E5%89%A7/" style="font-size: 20.67px; color: #6c6c6c">电视剧</a> <a href="/tags/%E8%A7%89%E9%86%92%E5%B9%B4%E4%BB%A3/" style="font-size: 20.67px; color: #6c6c6c">觉醒年代</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 17.33px; color: #828282">随笔</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">面向对象</a>
+>>>>>>> Stashed changes
     </div>
   </section>
 

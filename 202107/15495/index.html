@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8653369444768175"
+     crossorigin="anonymous"></script>
+
+  <!-- 页面元数据 -->
+  
+  <title>【手把手教你写Go】复合类型-结构体 - HappyTeemo</title>
+  
+    <meta name="keywords" content="Go">
+  
+
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post search' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">HappyTeemo</p>
+    
+    
+      <p class="subtitle">无法打败你的，都只会让你变得更强。</p>
+    
+  </div>
+  <div class='bottom'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="好奇心是打开新世界的第一步" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-rss fa-fw'></i><p>博客</p>
+            </a>
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <i class='fas fa-folder-open fa-fw'></i><p>分类</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <i class='fas fa-tags fa-fw'></i><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-archive fa-fw'></i><p>归档</p>
+            </a>
+          
+            <a href="/friends/"
+              
+              
+              id="friends">
+              <i class='fas fa-link fa-fw'></i><p>友链</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <i class='fas fa-info-circle fa-fw'></i><p>关于</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        【手把手教你写Go】复合类型-结构体
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' target="_blank" href="https://blog.csdn.net/happy_teemo" rel="nofollow noopener">
+    <img no-lazy src="https://gitee.com/HappyTeemo/cdn/raw/master/2021/20210818102538.jpg">
+    <p>快乐的提千万</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">Go语言基础</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jul 9, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>2.7k words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>13 min</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="【手把手教你写Go】复合类型-结构体" data-path="/202107/15495/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+<div class="new-meta-item comments-count">
+  
+  <a href="/202107/15495/#comments">
+    <i class="fas fa-comment-dots fa-fw"></i>
+    <span class="valine-comment-count" data-xid="/202107/15495/">0</span>
+    <span class="leancloud-comments-count">&nbsp;</span>
+  </a>
+</div>
+
+
+          
+        
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="7-6-结构体"><a href="#7-6-结构体" class="headerlink" title="7.6 结构体"></a>7.6 结构体</h2><h3 id="7-6-1-结构体类型"><a href="#7-6-1-结构体类型" class="headerlink" title="7.6.1 结构体类型"></a>7.6.1 结构体类型</h3><p>有时我们需要将不同类型的数据组合成一个有机的整体，如：一个学生有学号/姓名/性别/年龄/地址等属性。显然单独定义以上变量比较繁琐，数据不便于管理。</p>
+<p>结构体是一种聚合的数据类型，它是由一系列具有相同类型或不同类型的数据构成的数据集合。每个数据称为结构体的成员。</p>
+<h3 id="7-6-2-结构体初始化"><a href="#7-6-2-结构体初始化" class="headerlink" title="7.6.2 结构体初始化"></a>7.6.2 结构体初始化</h3><h4 id="7-6-2-1-普通变量"><a href="#7-6-2-1-普通变量" class="headerlink" title="7.6.2.1 普通变量"></a>7.6.2.1 普通变量</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    id   <span class="keyword">int</span></span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">    sex  <span class="keyword">byte</span></span><br><span class="line">    age  <span class="keyword">int</span></span><br><span class="line">    addr <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//1、顺序初始化，必须每个成员都初始化</span></span><br><span class="line">    <span class="keyword">var</span> s1 Student = Student&#123;<span class="number">1</span>, <span class="string">&quot;mike&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">18</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line">    s2 := Student&#123;<span class="number">2</span>, <span class="string">&quot;yoyo&quot;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="number">20</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line">    <span class="comment">//s3 := Student&#123;2, &quot;tom&quot;, &#x27;m&#x27;, 20&#125; //err, too few values in struct initializer</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">//2、指定初始化某个成员，没有初始化的成员为零值</span></span><br><span class="line">    s4 := Student&#123;id: <span class="number">2</span>, name: <span class="string">&quot;lily&quot;</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-6-2-2-指针变量"><a href="#7-6-2-2-指针变量" class="headerlink" title="7.6.2.2 指针变量"></a>7.6.2.2 指针变量</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    id   <span class="keyword">int</span></span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">    sex  <span class="keyword">byte</span></span><br><span class="line">    age  <span class="keyword">int</span></span><br><span class="line">    addr <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s5 *Student = &amp;Student&#123;<span class="number">3</span>, <span class="string">&quot;xiaoming&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">16</span>, <span class="string">&quot;bj&quot;</span>&#125;</span><br><span class="line">    s6 := &amp;Student&#123;<span class="number">4</span>, <span class="string">&quot;rocco&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">3</span>, <span class="string">&quot;sh&quot;</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-6-3-结构体成员的使用"><a href="#7-6-3-结构体成员的使用" class="headerlink" title="7.6.3 结构体成员的使用"></a>7.6.3 结构体成员的使用</h3><h4 id="7-6-3-1-普通变量"><a href="#7-6-3-1-普通变量" class="headerlink" title="7.6.3.1 普通变量"></a>7.6.3.1 普通变量</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//===============结构体变量为普通变量</span></span><br><span class="line">    <span class="comment">//1、打印成员</span></span><br><span class="line">    <span class="keyword">var</span> s1 Student = Student&#123;<span class="number">1</span>, <span class="string">&quot;mike&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">18</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line">    <span class="comment">//结果：id = 1, name = mike, sex = m, age = 18, addr = sz</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;id = %d, name = %s, sex = %c, age = %d, addr = %s\n&quot;</span>,</span><br><span class="line">        s1.id, s1.name, s1.sex, s1.age, s1.addr)</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//2、成员变量赋值</span></span><br><span class="line">    <span class="keyword">var</span> s2 Student</span><br><span class="line">    s2.id = <span class="number">2</span></span><br><span class="line">    s2.name = <span class="string">&quot;yoyo&quot;</span></span><br><span class="line">    s2.sex = <span class="string">&#x27;f&#x27;</span></span><br><span class="line">    s2.age = <span class="number">16</span></span><br><span class="line">    s2.addr = <span class="string">&quot;guangzhou&quot;</span></span><br><span class="line">    fmt.Println(s2) <span class="comment">//&#123;2 yoyo 102 16 guangzhou&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="7-6-3-2-指针变量"><a href="#7-6-3-2-指针变量" class="headerlink" title="7.6.3.2 指针变量"></a>7.6.3.2 指针变量</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//===============结构体变量为指针变量</span></span><br><span class="line"><span class="comment">//3、先分配空间，再赋值</span></span><br><span class="line">s3 := <span class="built_in">new</span>(Student)</span><br><span class="line">s3.id = <span class="number">3</span></span><br><span class="line">s3.name = <span class="string">&quot;xxx&quot;</span></span><br><span class="line">fmt.Println(s3) <span class="comment">//&amp;&#123;3 xxx 0 0 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//4、普通变量和指针变量类型打印</span></span><br><span class="line"><span class="keyword">var</span> s4 Student = Student&#123;<span class="number">4</span>, <span class="string">&quot;yyy&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">18</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;s4 = %v, &amp;s4 = %v\n&quot;</span>, s4, &amp;s4) </span><br><span class="line"><span class="comment">//s4 = &#123;4 yyy 109 18 sz&#125;, &amp;s4 = &amp;&#123;4 yyy 109 18 sz&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p *Student = &amp;s4</span><br><span class="line"><span class="comment">//p.成员 和(*p).成员 操作是等价的</span></span><br><span class="line">p.id = <span class="number">5</span></span><br><span class="line">(*p).name = <span class="string">&quot;zzz&quot;</span></span><br><span class="line">fmt.Println(p, *p, s4) <span class="comment">//&amp;&#123;5 zzz 109 18 sz&#125; &#123;5 zzz 109 18 sz&#125; &#123;5 zzz 109 18 sz&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-6-4-结构体比较"><a href="#7-6-4-结构体比较" class="headerlink" title="7.6.4 结构体比较"></a>7.6.4 结构体比较</h3><p>如果结构体的全部成员都是可以比较的，那么结构体也是可以比较的，那样的话两个结构体将可以使用 == 或 != 运算符进行比较，但不支持 &gt; 或 &lt; 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    s1 := Student&#123;1, &quot;mike&quot;, &#x27;m&#x27;, 18, &quot;sz&quot;&#125;</span><br><span class="line">    s2 := Student&#123;1, &quot;mike&quot;, &#x27;m&#x27;, 18, &quot;sz&quot;&#125;</span><br><span class="line"> </span><br><span class="line">    fmt.Println(&quot;s1 == s2&quot;, s1 == s2) //s1 == s2 true</span><br><span class="line">    fmt.Println(&quot;s1 != s2&quot;, s1 != s2) //s1 != s2 false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-6-5-结构体作为函数参数"><a href="#7-6-5-结构体作为函数参数" class="headerlink" title="7.6.5 结构体作为函数参数"></a>7.6.5 结构体作为函数参数</h3><h4 id="7-6-5-1-值传递"><a href="#7-6-5-1-值传递" class="headerlink" title="7.6.5.1 值传递"></a>7.6.5.1 值传递</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printStudentValue</span><span class="params">(tmp Student)</span></span> &#123;</span><br><span class="line">    tmp.id = <span class="number">250</span></span><br><span class="line">    <span class="comment">//printStudentValue tmp =  &#123;250 mike 109 18 sz&#125;</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;printStudentValue tmp = &quot;</span>, tmp)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="keyword">var</span> s Student = Student&#123;<span class="number">1</span>, <span class="string">&quot;mike&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">18</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line"> </span><br><span class="line">    printStudentValue(s)        <span class="comment">//值传递，形参的修改不会影响到实参</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;main s = &quot;</span>, s) <span class="comment">//main s =  &#123;1 mike 109 18 sz&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-6-5-2-引用传递"><a href="#7-6-5-2-引用传递" class="headerlink" title="7.6.5.2 引用传递"></a>7.6.5.2 引用传递</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printStudentPointer</span><span class="params">(p *Student)</span></span> &#123;</span><br><span class="line">    p.id = <span class="number">250</span></span><br><span class="line">    <span class="comment">//printStudentPointer p =  &amp;&#123;250 mike 109 18 sz&#125;</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;printStudentPointer p = &quot;</span>, p)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> s Student = Student&#123;<span class="number">1</span>, <span class="string">&quot;mike&quot;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="number">18</span>, <span class="string">&quot;sz&quot;</span>&#125;</span><br><span class="line"> </span><br><span class="line">    printStudentPointer(&amp;s)     <span class="comment">//引用(地址)传递，形参的修改会影响到实参</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;main s = &quot;</span>, s) <span class="comment">//main s =  &#123;250 mike 109 18 sz&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-6-2-可见性"><a href="#7-6-2-可见性" class="headerlink" title="7.6.2 可见性"></a>7.6.2 可见性</h3><p>Go语言对关键字的增加非常吝啬，其中没有private、 protected、 public这样的关键字。</p>
+<blockquote>
+<p>要使某个符号对其他包（package）可见（即可以访问），需要将该符号定义为以大写字母开头。</p>
+</blockquote>
+<h3 id="7-6-7-结构体tag"><a href="#7-6-7-结构体tag" class="headerlink" title="7.6.7 结构体tag"></a>7.6.7 结构体tag</h3><p>正常情况下，你定义的结构体是这样子的，每个字段都由名字和字段类型组成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">    Age  int</span><br><span class="line">    Addr string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也有例外，就像下面这样子，字段上还可以额外再加一个属性，用反引号（Esc键下面的那个键）包含的字符串，称之为 Tag，也就是标签。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    Name string `json:&quot;name&quot;`</span><br><span class="line">    Age  int    `json:&quot;age&quot;`</span><br><span class="line">    Addr string `json:&quot;addr,omitempty&quot;`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>那么这个标签有什么用呢？</p>
+<p>这边先以 <code>encoding/json</code> 库的用法抛砖引玉，看一下它能起到什么样的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">    &quot;encoding/json&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">type Person struct &#123;</span><br><span class="line">    Name string `json:&quot;name&quot;`</span><br><span class="line">    Age  int    `json:&quot;age&quot;`</span><br><span class="line">    Addr string `json:&quot;addr,omitempty&quot;`</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">    p1 := Person&#123;</span><br><span class="line">        Name: &quot;Jack&quot;,</span><br><span class="line">        Age:  22,</span><br><span class="line">    &#125;</span><br><span class="line">    data1, err := json.Marshal(p1)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        panic(err)</span><br><span class="line">    &#125;</span><br><span class="line">    // p1 没有 Addr，就不会打印了</span><br><span class="line">    fmt.Printf(&quot;%s\n&quot;, data1)</span><br><span class="line">    // ================</span><br><span class="line">    p2 := Person&#123;</span><br><span class="line">        Name: &quot;Jack&quot;,</span><br><span class="line">        Age:  22,</span><br><span class="line">        Addr: &quot;China&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">    data2, err := json.Marshal(p2)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        panic(err)</span><br><span class="line">    &#125;</span><br><span class="line">    // p2 则会打印所有</span><br><span class="line">    fmt.Printf(&quot;%s\n&quot;, data2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于 Person 结构体里的 Addr 字段有 omitempty 属性，因此 encoding/json 在将对象转化 json 字符串时，只要发现对象里的 Addr 为 false， 0， 空指针，空接口，空数组，空切片，空映射，空字符串中的一种，就会被忽略。</p>
+<p>因此运行后，输出的结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go run demo.go</span><br><span class="line">&#123;&quot;name&quot;:&quot;Jack&quot;,&quot;age&quot;:22&#125;</span><br><span class="line">&#123;&quot;name&quot;:&quot;Jack&quot;,&quot;age&quot;:22,&quot;addr&quot;:&quot;China&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="如何定义获取-Tag-？"><a href="#如何定义获取-Tag-？" class="headerlink" title="如何定义获取 Tag ？"></a>如何定义获取 Tag ？</h4><p>Tag 由反引号包含，由一对或几对的键值对组成，通过空格来分割键值。格式如下</p>
+<p><code>key01:&quot;value01&quot; key02:&quot;value02&quot; key03:&quot;value03&quot;</code></p>
+<p>定义完后，如何从结构体中，取出 Tag 呢？</p>
+<p>答案就是，我们上一节学过的 “反射”。</p>
+<p>获取 Tag 可以分为三个步骤：</p>
+<ol>
+<li> 获取字段 field</li>
+<li> 获取标签 tag</li>
+<li> 获取键值对 key:value</li>
+</ol>
+<p>演示如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 三种获取 field</span><br><span class="line">field := reflect.TypeOf(obj).FieldByName(&quot;Name&quot;)</span><br><span class="line">field := reflect.ValueOf(obj).Type().Field(i)  // i 表示第几个字段</span><br><span class="line">field := reflect.ValueOf(&amp;obj).Elem().Type().Field(i)  // i 表示第几个字段</span><br><span class="line">// 获取 Tag</span><br><span class="line">tag := field.Tag</span><br><span class="line">// 获取键值对</span><br><span class="line">labelValue := tag.Get(&quot;label&quot;)</span><br><span class="line">labelValue,ok := tag.Lookup(&quot;label&quot;)</span><br><span class="line">//获取键值对，有Get 和 Lookup 两种方法，但其实 Get 只是对 Lookup 函数的简单封装而已，当没有获取到对应 tag 的内容，会返回空字符串。</span><br><span class="line">func (tag StructTag) Get(key string) string &#123;</span><br><span class="line">    v, _ := tag.Lookup(key)</span><br><span class="line">    return v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>空 Tag 和不设置 Tag 效果是一样的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="keyword">string</span> <span class="string">``</span></span><br><span class="line">    Age <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p := reflect.TypeOf(Person&#123;&#125;)</span><br><span class="line">    name, _ := p.FieldByName(<span class="string">&quot;Name&quot;</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;%q\n&quot;</span>, name.Tag) <span class="comment">//输出 &quot;&quot;</span></span><br><span class="line">    age, _ := p.FieldByName(<span class="string">&quot;Age&quot;</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;%q\n&quot;</span>, age.Tag) <span class="comment">// 输出 &quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-实战一下：利用-Tag-搞点事情？"><a href="#3-实战一下：利用-Tag-搞点事情？" class="headerlink" title="3. 实战一下：利用 Tag 搞点事情？"></a>3. 实战一下：利用 Tag 搞点事情？</h4><p>学会了如何定义 tag 和 获取 tag，可以试着利用 tag 来做一些事情，来练习一下。</p>
+<p>这边我举个例子吧。</p>
+<p>如果我想实现一个函数（就叫 Print 吧），在打印 person 对象时，能够美化输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">    Name        string</span><br><span class="line">    Age         int</span><br><span class="line">    Gender      string</span><br><span class="line">&#125;</span><br><span class="line">person := Person&#123;</span><br><span class="line">    Name:        &quot;MING&quot;,</span><br><span class="line">    Age:         29,</span><br><span class="line">&#125;</span><br><span class="line">Print(person)</span><br><span class="line">就像下面这样，key 和 value 之间有个 is:，如果没有指定 Gender 的值，那么显示为unknown（未知）。</span><br><span class="line">Name is: MING</span><br><span class="line">Age is: 29</span><br><span class="line">Gender is: unknown</span><br></pre></td></tr></table></figure>
+
+
+<p>那该怎么做呢？</p>
+<p>先改造下 Person 结构体，给每个字段加上 tag 标签，三个字段的tag 都有 label 属性，而 Gender 多了一个 default 属性，意在指定默认值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name        <span class="keyword">string</span> <span class="string">`label:&quot;Name is: &quot;`</span></span><br><span class="line">    Age         <span class="keyword">int</span>    <span class="string">`label:&quot;Age is: &quot;`</span></span><br><span class="line">    Gender      <span class="keyword">string</span> <span class="string">`label:&quot;Gender is: &quot; default:&quot;unknown&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后来写一下这个 Print 函数</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Print</span><span class="params">(obj <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="comment">// 取 Value</span></span><br><span class="line">    v := reflect.ValueOf(obj)</span><br><span class="line">    <span class="comment">// 解析字段</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; v.NumField(); i++ &#123;</span><br><span class="line">        <span class="comment">// 取tag</span></span><br><span class="line">        field := v.Type().Field(i)</span><br><span class="line">        tag := field.Tag</span><br><span class="line">        <span class="comment">// 解析label 和 default</span></span><br><span class="line">        label := tag.Get(<span class="string">&quot;label&quot;</span>)</span><br><span class="line">        defaultValue := tag.Get(<span class="string">&quot;default&quot;</span>)</span><br><span class="line">        value := fmt.Sprintf(<span class="string">&quot;%v&quot;</span>, v.Field(i))</span><br><span class="line">        <span class="keyword">if</span> value == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">            <span class="comment">// 如果没有指定值，则用默认值替代</span></span><br><span class="line">            value = defaultValue</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(label + value)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">最后执行一下，看了下输出，符合我们的预期：</span><br><span class="line"></span><br><span class="line">$ <span class="keyword">go</span> run demo.<span class="keyword">go</span></span><br><span class="line">Name is: MING</span><br><span class="line">Age is: <span class="number">29</span></span><br><span class="line">Gender is: unknown</span><br></pre></td></tr></table></figure>
+
+<p>到此，我们就把 Tag 的用法介绍完了。</p>
+<h1 id="新手常见的问题"><a href="#新手常见的问题" class="headerlink" title="新手常见的问题"></a>新手常见的问题</h1><h2 id="new-和-var-一个结构体的区别"><a href="#new-和-var-一个结构体的区别" class="headerlink" title="new 和 var 一个结构体的区别"></a>new 和 var 一个结构体的区别</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Vertex <span class="keyword">struct</span> &#123;</span><br><span class="line">    X, Y <span class="keyword">float64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(v *Vertex)</span> <span class="title">Scale</span><span class="params">(f <span class="keyword">float64</span>)</span></span> &#123;</span><br><span class="line">    v.X = v.X * f</span><br><span class="line">    v.Y = v.Y * f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ScaleFunc</span><span class="params">(v *Vertex, f <span class="keyword">float64</span>)</span></span> &#123;</span><br><span class="line">    v.X = v.X * f</span><br><span class="line">    v.Y = v.Y * f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    v := Vertex&#123;<span class="number">3</span>, <span class="number">4</span>&#125; <span class="comment">//这里返回的是值</span></span><br><span class="line">    <span class="comment">//ScaleFunc(v, 5)  // 编译错误！</span></span><br><span class="line">    ScaleFunc(&amp;v, <span class="number">10</span>)</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> v1 = <span class="built_in">new</span>(Vertex)<span class="comment">//这里返回的是指针</span></span><br><span class="line">    ScaleFunc(v1, <span class="number">10</span>)</span><br><span class="line">    fmt.Println(v1)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> v Vertex</span><br><span class="line">    v.Scale(<span class="number">5</span>)  <span class="comment">// OK 解释为 (&amp;v).Scale(5)。</span></span><br><span class="line">    p := &amp;v</span><br><span class="line">    p.Scale(<span class="number">10</span>) <span class="comment">// OK</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    对于语句 v.Scale(5)，即便 v 是个值而非指针，带指针接收者的方法也能被直接调用。 </span></span><br><span class="line"><span class="comment">    也就是说，由于 Scale 方法有一个指针接收者，为方便起见，Go 会将语句 v.Scale(5) 解释为 (&amp;v).Scale(5)。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    fmt.Println(v, p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法和函数的区别"><a href="#方法和函数的区别" class="headerlink" title="方法和函数的区别"></a>方法和函数的区别</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;math&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Vertex struct &#123;</span><br><span class="line">    X, Y float64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (v Vertex) Abs() float64 &#123;</span><br><span class="line">    return math.Sqrt(v.X*v.X + v.Y*v.Y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func AbsFunc(v Vertex) float64 &#123;</span><br><span class="line">    return math.Sqrt(v.X*v.X + v.Y*v.Y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    v := Vertex&#123;3, 4&#125;</span><br><span class="line">    fmt.Println(v.Abs())</span><br><span class="line">    fmt.Println(AbsFunc(v))</span><br><span class="line"></span><br><span class="line">    p := &amp;Vertex&#123;4, 3&#125;</span><br><span class="line">    fmt.Println(p.Abs())</span><br><span class="line">    fmt.Println(AbsFunc(*p))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">接受一个值作为参数的函数必须接受一个指定类型的值：</span><br><span class="line"></span><br><span class="line">var v Vertex</span><br><span class="line">fmt.Println(AbsFunc(v))  // OK</span><br><span class="line">fmt.Println(AbsFunc(&amp;v)) // 编译错误！</span><br><span class="line"></span><br><span class="line">而以值为接收者的方法被调用时，接收者既能为值又能为指针：</span><br><span class="line"></span><br><span class="line">var v Vertex</span><br><span class="line">fmt.Println(v.Abs()) // OK</span><br><span class="line">p := &amp;v</span><br><span class="line">fmt.Println(p.Abs()) // OK</span><br><span class="line">这种情况下，方法调用 p.Abs() 会被解释为 (*p).Abs()。</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>方法的接收可以自动兼容。</p>
+<p>函数的接收会严格校验</p>
+<h2 id="选择值或指针作为接收者"><a href="#选择值或指针作为接收者" class="headerlink" title="选择值或指针作为接收者"></a>选择值或指针作为接收者</h2><p>使用指针接收者的原因有二：</p>
+<p>首先，方法能够修改其接收者指向的值。</p>
+<p>其次，这样可以避免在每次调用方法时复制该值。若值的类型为大型结构体时，这样做会更加高效。</p>
+<p>在本例中，<code>Scale</code> 和 <code>Abs</code> 接收者的类型为 <code>*Vertex</code>，即便 <code>Abs</code> 并不需要修改其接收者。</p>
+<p>通常来说，所有给定类型的方法都应该有值或指针接收者，但并不应该二者混用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;math&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Vertex struct &#123;</span><br><span class="line">    X, Y float64</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (v *Vertex) Scale(f float64) &#123;</span><br><span class="line">    v.X = v.X * f</span><br><span class="line">    v.Y = v.Y * f</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (v *Vertex) Abs() float64 &#123;</span><br><span class="line">    return math.Sqrt(v.X*v.X + v.Y*v.Y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    v := &amp;Vertex&#123;3, 4&#125;</span><br><span class="line">    fmt.Printf(&quot;Before scaling: %+v, Abs: %v\n&quot;, v, v.Abs())</span><br><span class="line">    v.Scale(5)</span><br><span class="line">    fmt.Printf(&quot;After scaling: %+v, Abs: %v\n&quot;, v, v.Abs())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://www.happyteemo.com/202107/15495/>https://www.happyteemo.com/202107/15495/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-08-22T15:21:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Aug 22, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Go/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Go</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.happyteemo.com/202107/15495/&title=【手把手教你写Go】复合类型-结构体 - HappyTeemo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.happyteemo.com/202107/15495/&title=【手把手教你写Go】复合类型-结构体 - HappyTeemo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.happyteemo.com/202107/15495/&title=【手把手教你写Go】复合类型-结构体 - HappyTeemo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/202107/18820/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>【手把手教你写Go】面向对象编程</p>
+          <p class='content'>8.1 概述对于面向对象编程的支持Go 语言设计得非常简洁而优雅。因为， Go语言并没有沿袭传统面向对象编程中的诸多概念，比如继承(不支持继承，尽管匿名字段的内存布局和行为类似继承，但它并不是继...</p>
+        </a>
+      
+      
+        <a class='next' href='/202107/55300/'>
+          <p class='title'>【手把手教你写Go】复合类型-map<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>7.5 map7.5.1 概述Go语言中的map(映射、字典)是一种内置的数据结构，它是一个无序的key—value对的集合，比如以身份证号作为唯一键来标识一个人的信息。
+map格式为：
+1ma...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-6-%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">7.6 结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-1-%E7%BB%93%E6%9E%84%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-text">7.6.1 结构体类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-2-%E7%BB%93%E6%9E%84%E4%BD%93%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">7.6.2 结构体初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-2-1-%E6%99%AE%E9%80%9A%E5%8F%98%E9%87%8F"><span class="toc-text">7.6.2.1 普通变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-2-2-%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-text">7.6.2.2 指针变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-3-%E7%BB%93%E6%9E%84%E4%BD%93%E6%88%90%E5%91%98%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">7.6.3 结构体成员的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-3-1-%E6%99%AE%E9%80%9A%E5%8F%98%E9%87%8F"><span class="toc-text">7.6.3.1 普通变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-3-2-%E6%8C%87%E9%92%88%E5%8F%98%E9%87%8F"><span class="toc-text">7.6.3.2 指针变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-4-%E7%BB%93%E6%9E%84%E4%BD%93%E6%AF%94%E8%BE%83"><span class="toc-text">7.6.4 结构体比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-5-%E7%BB%93%E6%9E%84%E4%BD%93%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-text">7.6.5 结构体作为函数参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-5-1-%E5%80%BC%E4%BC%A0%E9%80%92"><span class="toc-text">7.6.5.1 值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-6-5-2-%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-text">7.6.5.2 引用传递</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-2-%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-text">7.6.2 可见性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-7-%E7%BB%93%E6%9E%84%E4%BD%93tag"><span class="toc-text">7.6.7 结构体tag</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E8%8E%B7%E5%8F%96-Tag-%EF%BC%9F"><span class="toc-text">如何定义获取 Tag ？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%9E%E6%88%98%E4%B8%80%E4%B8%8B%EF%BC%9A%E5%88%A9%E7%94%A8-Tag-%E6%90%9E%E7%82%B9%E4%BA%8B%E6%83%85%EF%BC%9F"><span class="toc-text">3. 实战一下：利用 Tag 搞点事情？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new-%E5%92%8C-var-%E4%B8%80%E4%B8%AA%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">new 和 var 一个结构体的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">方法和函数的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%80%BC%E6%88%96%E6%8C%87%E9%92%88%E4%BD%9C%E4%B8%BA%E6%8E%A5%E6%94%B6%E8%80%85"><span class="toc-text">选择值或指针作为接收者</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="【手把手教你写Go】复合类型-结构体";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.3.1" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+<script src="/js/valine.js"></script>
+
+
+<script>
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+    var valine = new Valine();
+    valine.init(Object.assign({"path":null,"placeholder":"快来评论吧~","appId":"GzMVP8NqDvoOVo2zP7lT2siE-gzGzoHsz","appKey":"KLsarnXrM1fRVFYbqPunGoda","meta":["nick","mail","link"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"verify":false,"notify":false}, {
+      el: '#valine_container',
+      path: path,
+      placeholder: pagePlaceholder,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps,
+    }))
+  }
+  $(function () {
+    pjax_valine();
+  });
+  volantis.pjax.push(pjax_valine);
+</script>
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+		document.addEventListener("pjax:success", listenSearch);
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'https://www.happyteemo.com' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'https://www.happyteemo.com' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'https://www.happyteemo.com' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/sakura.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/mouse_slide.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/mouse_click.js"></script>
+  </body>
+</html>
